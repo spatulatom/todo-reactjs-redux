@@ -1,42 +1,45 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+let initialState = []
+ 
 export const counterSlice = createSlice({
   name: 'counter',
-  initialState: {
-    value: 0,
-  },
+  initialState,
+    
+
   reducers: {
-    increment: state => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
-    },
-    decrement: state => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
+    addTodos(state, action){
+  
+        state.push(action.payload)
+
   },
-});
+  changeStatus(state, action){
+    const{id}=action.payload
+// const existingPost = state[id] - to jest jakis skrot, 
+// w ogole nie szuka tego posta
+    const existingPost = state.find(post=> post.id===id)
+    console.log(existingPost.completed)
+    if(existingPost){
+    existingPost.completed = !existingPost.completed
+    }
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+  },
+  deleteItem(state,action){
+const{id}=action.payload
+// console.log(id)
+const existingPost = state.filter(post=> post.id !==id)
+// console.log(existingPost)
+if(existingPost){
+return existingPost}
+  },
+  saveLocalStorageIntoState(state,action){
+const blah = action.payload.map(item=>state.push(item))
+  }
+}})
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched
-export const incrementAsync = amount => dispatch => {
-  setTimeout(() => {
-    dispatch(incrementByAmount(amount));
-  }, 1000);
-};
+export const { addTodos,changeStatus,deleteItem, saveLocalStorageIntoState } = counterSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = state => state.counter.value;
+
+// export const selectCount = state => state.counter.value;
 
 export default counterSlice.reducer;
