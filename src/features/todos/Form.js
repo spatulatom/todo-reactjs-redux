@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  addTodos
-} from './counterSlice';
+  addTodos,
+  filterTodos
+} from './todosSlice';
 // import styles from './Counter.module.css';
 
 export function Form() {
@@ -10,22 +11,19 @@ export function Form() {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState();
 
-  const inputTextHandler=(e) =>{
-    setInputText(e.target.value);
-}
+ 
+
+const inputTextHandler=(e) =>{
+  setInputText(e.target.value);
+  }
+
 const submitTodoHandler = (e) =>{
-    e.preventDefault();
-    dispatch(addTodos(
-      // ...todos means that if there are any todos - pass them along,
-// as wthat after coma we spacify what's next
-        
-        {text:inputText, completed:false, id: Math.random() *1000}
-    ));
+  e.preventDefault();
+  dispatch(addTodos({text:inputText, completed:false, id: Math.random() *1000}));
     setInputText("");
 };
-// const statusHandler = (e) => {
-//   setStatus(e.target.value)
-// }
+
+const filterTodosHandler = e => dispatch(filterTodos({value:e.target.value}));
 
   return (
     <form>
@@ -34,7 +32,7 @@ const submitTodoHandler = (e) =>{
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
-        <select  name="todos" className="filter-todo">
+        <select onChange={filterTodosHandler}name="todos" className="filter-todo">
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>

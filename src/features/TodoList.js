@@ -6,20 +6,19 @@ import Todo from './Todo'
 
 
 const TodoList = () => {
-    const posts = useSelector(state => state.counter)
 
-    const renderedPosts = posts.map(post => (
-       <Todo text={post.text}
-     completed={post.completed} id={post.id} />
+const posts = useSelector(state => state.todos.filters)
+
+const renderedPosts = posts.map(post => (
+  <Todo text={post.text}
+  completed={post.completed} id={post.id} />
+))
     
-      
-    ))
-    
-  return (
-    <div className="todo-container">
-     <ul className="todo-list"> {renderedPosts} </ul>
-    </div>
-  ); 
+return (
+  <div className="todo-container">
+    <ul className="todo-list"> {renderedPosts} </ul>
+  </div>
+); 
 }
 
 export default TodoList;
