@@ -120,7 +120,7 @@ select {
   color: #ff6f47;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
-  width: 12rem;
+  min-width: 10rem;
 }
 /* Arrow */
 .select::after {
@@ -148,7 +148,7 @@ select {
 form input,
 form button {
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 form input{
   max-width: 50vw
@@ -158,6 +158,12 @@ form input{
 }
 .select{
   margin: 0.3rem
+}
+.select::after {
+ 
+  top: -20%; 
+  right: 0;
+
 }
 
 }
