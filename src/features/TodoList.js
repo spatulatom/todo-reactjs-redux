@@ -10,7 +10,7 @@ const TodoList = () => {
 const posts = useSelector(state => state.todos.filters)
 
 const renderedPosts = posts.map(post => (
-  <Todo text={post.text}
+  <Todo text={post.text} key={post.id}
   completed={post.completed} id={post.id} />
 ))
     
