@@ -11,8 +11,7 @@
 
 
   <p>
-    a to-do list is a React/Redux webb app - this repository contains isource code while
-    the backend source code 
+    a To-Do List is a React/Redux webb app - this repository contains its source code
     <br />
     <a href="https://spatulatom.github.io/todo-reactjs-redux/"><strong>View the deployed app »</strong></a>
     <br />
@@ -29,6 +28,7 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#built-with">Built With</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -57,6 +57,14 @@ This little project is a to-do list built with React and Redux library. Tasks on
 
 This React.js app is using Redux with Hooks like useSelector() and useDispatch() for connecting to the Redux store and
 Redux Toolkit's createSlice function (that uses Immer library) for creating reducers (and writing immutable updates in the reducer - no more tedious state coping like in the older verion of Redux). Actions are dispatched to manage saving/retriving state from localStorage through the rerender cycles.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Acknowledgments
+
+*  https://redux.js.org/
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
