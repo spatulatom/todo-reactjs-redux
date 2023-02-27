@@ -60,6 +60,7 @@ Redux Toolkit's createSlice function (that uses Immer library) for creating redu
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgments
+* https://www.youtube.com/@developedbyed
 
 *  https://redux.js.org/
 
